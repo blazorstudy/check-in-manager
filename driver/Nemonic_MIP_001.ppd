@@ -1,0 +1,158 @@
+*PPD-Adobe: "4.3"
+
+*% Copyright (C) Mangoslab Co.,Ltd 2018. All rights reserved.
+*%
+*% Nemonic MIP-001 receipt printer PPD for Common Unix Printing System (CUPS).
+*%
+*% CUPS version 1.5.3
+*% Mac OS X 10.9 or later
+
+*%-----------------------------Start of Change Log-----------------------------------*%
+*% Date 		File Version	Changes
+*%-----------------------------------------------------------------------------------*%
+*% 12-JAN-2018		0.0.0.1 	Initial Version.
+*%					Added PPD parameters.
+*%					Added Page region,Page Size,Imageable area options.
+*%
+*%
+*%
+*%
+*%-------------------End of Change Log---------------------------------------------*%
+
+*FormatVersion: "4.3"
+*FileVersion: "1.0.1"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "NemMIP01.PPD"
+*Manufacturer: "MANGOSLAB"
+*Product: "(Sticky Note Printer)"
+*ModelName:"nemonic MIP-001"
+*ShortNickName:"nemonic MIP-001"
+*NickName: "nemonic MIP-001"
+*PSVersion: "(3010.000) 0"
+*LanguageLevel: "3"
+*ColorDevice: False
+*DefaultColorSpace: RGB
+*FileSystem: False
+*Throughput: "1"
+*LandscapeOrientation: Plus90
+*VariablePaperSize: True
+*TTRasterizer: Type42
+*cupsVersion: 1.5.3
+*cupsManualCopies: True
+*cupsModelNumber: 1
+*1284DeviceID:	"MFG:nemonic ;CMD:ESC,STAR;MDL:MIP-001;CLS:PRINTER"
+*cupsFilter: "application/vnd.cups-raster 50 /usr/libexec/cups/filter/rastertonemonic"
+*APPrinterIconPath: "/Library/Printers/Nemonic/nemonic.icns"
+
+
+
+*%OpenGroup: PageLayout/Page Layout
+*%Page orientation options.
+
+*%OpenUI *Orientation/Orientation:PickOne
+*%OrderDependency: 10 AnySetup *Orientation
+*%DefaultOrientation:Portrait
+*%Orientation Portrait:
+*%Orientation Landscape:
+*%CloseUI: *Orientation
+*%CloseGroup: PageLayout
+
+*%OpenGroup: Paper/Paper Options
+*% paper source selection.
+
+*OpenUI *PaperSource/Paper Source:PickOne
+*OrderDependency: 10 AnySetup *PaperSource
+*DefaultPaperSource: Automatic
+*PaperSource Automatic/Automatic:
+*CloseUI: *PaperSource
+*CloseGroup: Paper
+
+*%CloseGroup: PrintCopiesOptions
+
+*OpenGroup: General/General
+
+*OpenUI *Rotation/Rotate 180 Degree: PickOne
+*OrderDependency: 10 AnySetup *Rotation
+*DefaultRotation: 0No 
+*Rotation 0No/No: "setpagedevice"
+*Rotation 1Yes/Yes: "setpagedevice"
+*CloseUI: *Rotation
+
+*OpenUI *Cutopt/Auto Cutting(Label Paper): PickOne
+*OrderDependecy: 10 AnySetUp *Cutopt
+*DefaultCutopt: 0Last
+*Cutopt 0Last/Cut the last page: "setpagedevice"
+*Cutopt 1Each/Cut all pages: "setpagedevice"
+*CloseUI: *Cutopt
+
+*OpenUI *ColorMatching/Color Matching: PickOne
+*OrderDependency: 10 AnySetup *ColorMatching
+*DefaultColorMatching: System
+*ColorMatching System/System Color Management: "<</cupsColorOrder 0/cupsColorSpace 1/cupsBitsPerColor 8/HWResolution[203 203]>>setpagedevice"
+*CloseUI: *ColorMatching
+
+
+*%Page size settings.
+*OpenUI *PageSize/Media Size: PickOne
+*OrderDependency: 11 AnySetup *PageSize
+*DefaultPageSize:80x80mm.Fullbleed
+*PageSize 80x28mm.Transverse/80 x 28 mm: "<</PageSize[226.8 79.4]/ImagingBBox null>>setpagedevice"
+*PageSize 80x56mm.Transverse/80 x 56 mm: "<</PageSize[226.8 158.7]/ImagingBBox null>>setpagedevice"
+*PageSize 80x80mm.Fullbleed/80 x 80 mm: "<</PageSize[226.8 226.8]/ImagingBBox null>>setpagedevice"
+*PageSize 80x104mm.Fullbleed/80 x 104 mm: "<</PageSize[226.8 294.8]/ImagingBBox null>>setpagedevice"
+*PageSize 80x136mm.Fullbleed/80 x 136 mm: "<</PageSize[226.8 385.5]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 11 AnySetup *PageRegion
+*DefaultPageRegion:80x80mm.Fullbleed
+*PageRegion 80x28mm.Transverse/80 x 28 mm: "<</PageSize[226.8 79.4]/ImagingBBox null>>setpagedevice"
+*PageRegion 80x56mm.Transverse/80 x 56 mm: "<</PageSize[226.8 158.7]/ImagingBBox null>>setpagedevice"
+*PageRegion 80x80mm.Fullbleed/80 x 80 mm: "<</PageSize[226.8 226.8]/ImagingBBox null>>setpagedevice"
+*PageRegion 80x104mm.Fullbleed/80 x 104 mm: "<</PageSize[226.8 294.8]/ImagingBBox null>>setpagedevice"
+*PageRegion 80x136mm.Fullbleed/80 x 136 mm: "<</PageSize[226.8 385.5]/ImagingBBox null>>setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: 80x80mm.Fullbleed
+*ImageableArea 80x28mm.Transverse/80 x 28mm: "11.3 11.3 215.5 79.4"
+*ImageableArea 80x56mm.Transverse/80 x 56mm: "11.3 11.3 215.5 147.4"
+*ImageableArea 80x80mm.Fullbleed/80 x 80 mm: "11.3 11.3 215.5 215.5"
+*ImageableArea 80x104mm.Fullbleed/80 x 104 mm: "11.3 11.3 215.5 283.6"
+*ImageableArea 80x136mm.Fullbleed/80 x 136 mm: "11.3 11.3 215.5 374.4"
+
+*DefaultPaperDimension: 80x80mm.Fullbleed
+*PaperDimension 80x28mm.Transverse/80 x 28 mm: "226.8 79.4"
+*PaperDimension 80x56mm.Transverse/80 x 56 mm: "226.8 158.7"
+*PaperDimension 80x80mm.Fullbleed/80 x 80 mm: "226.8 226.8"
+*PaperDimension 80x104mm.Fullbleed/80 x 104 mm: "226.8 294.8"
+*PaperDimension 80x136mm.Fullbleed/80 x 136 mm: "226.8 385.5"
+
+*MaxMediaWidth:  "226.8"
+*MaxMediaHeight: "794.5"
+*HWMargins:	 11.3 11.3 11.3 11.3 
+*CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
+*ParamCustomPageSize Width:	   1 points 226.8 226.8
+*ParamCustomPageSize Height:	   2 points 72 794.5
+*ParamCustomPageSize WidthOffset:  3 points 11.3 11.3 
+*ParamCustomPageSize HeightOffset: 4 points 11.3 11.3 
+*ParamCustomPageSize Orientation:  5 int 0 0
+
+*CloseGroup: General
+
+*% End
+
+*ko.Translation Rotation/180도 회전: ""
+*ko.Rotation 0No/아니오: "setpagedevice"
+*ko.Rotation 1Yes/예: "setpagedevice"
+*ko.Translation Cutopt/자동 자르기(라벨 용지): ""
+*ko.Cutopt 0Last/마지막 페이지 자르기: "setpagedevice"
+*ko.Cutopt 1Each/모든 페이지 자르기: "setpagedevice"
+
+*ja.Translation Rotation/180度回転: ""
+*ja.Rotation 0No/いいえ: "setpagedevice"
+*ja.Rotation 1Yes/例: "setpagedevice"
+*ja.Translation Cutopt/オートカット（ラベル用紙）: ""
+*ja.Cutopt 0Last/最後のページのみをカットする: "setpagedevice"
+*ja.Cutopt 1Each/すべてのページをカットする: "setpagedevice"
+

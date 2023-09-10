@@ -47,20 +47,20 @@ public sealed class MeetUpNameTagDocument : IDocument
                 .Column(column =>{
                     column.Spacing(20);
 
-                    column.Item().Text(text => WriteUserName(text, Model.Name));
-                    column.Item().Text(text => WriteCompany(text, Model.Company));
+                    column.Item().Text(text => WriteTitle(text, Model.Name));
+                    column.Item().Text(text => WriteBody(text, Model.Personal));
                 });
         });
     }
 
-    private void WriteUserName(TextDescriptor descriptor, string? userName)
+    private void WriteTitle(TextDescriptor descriptor, string? userName)
     {
         descriptor.AlignCenter();
 
         descriptor.Span(userName).FontSize(20).Bold();
     }
 
-    private void WriteCompany(TextDescriptor descriptor, string? company)
+    private void WriteBody(TextDescriptor descriptor, string? company)
     {
         descriptor.AlignCenter();
 
