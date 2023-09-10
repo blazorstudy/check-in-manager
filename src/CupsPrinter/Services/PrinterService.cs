@@ -30,7 +30,7 @@ public sealed class PrinterService : IPrinterService
         var model = new MeetUpNameTagModel
         {
             Name = "User Name",
-            Personal = "Cloud Bandwagon"
+            Company = "Cloud Bandwagon"
         };
         var document = new MeetUpNameTagDocument(model, paperType);
         document.GeneratePdf(pdfPath);

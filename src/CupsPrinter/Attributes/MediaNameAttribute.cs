@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CupsPrinter.Attributes;
+﻿namespace CupsPrinter.Attributes;
 
 /// <summary>
 /// MediaName attribute.

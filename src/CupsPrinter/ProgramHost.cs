@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using CupsPrinter.Services.Interfaces;
+﻿using CupsPrinter.Services.Interfaces;
 using Microsoft.Extensions.Hosting;
 
 namespace CupsPrinter;

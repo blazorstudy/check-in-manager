@@ -1,5 +1,4 @@
-﻿using System;
-using CupsPrinter.Extensions;
+﻿using CupsPrinter.Extensions;
 using CupsPrinter.Models;
 using CupsPrinter.Structures;
 using QuestPDF.Fluent;
@@ -48,7 +47,7 @@ public sealed class MeetUpNameTagDocument : IDocument
                     column.Spacing(20);
 
                     column.Item().Text(text => WriteTitle(text, Model.Name));
-                    column.Item().Text(text => WriteBody(text, Model.Personal));
+                    column.Item().Text(text => WriteBody(text, Model.Company));
                 });
         });
     }
