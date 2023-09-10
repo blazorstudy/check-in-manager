@@ -48,7 +48,7 @@ public sealed class MeetUpNameTagDocument : IDocument
                     column.Spacing(20);
 
                     column.Item().Text(text => WriteTitle(text, Model.Name));
-                    column.Item().Text(text => WriteBody(text, Model.Personal));
+                    column.Item().Text(text => WriteBody(text, Model.Company));
                 });
         });
     }

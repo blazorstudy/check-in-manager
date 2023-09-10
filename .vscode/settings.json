@@ -1,0 +1,16 @@
+{
+  // ⬇️⬇️⬇️ For QR Code Generator ⬇️⬇️⬇️
+  // "azureFunctions.deploySubpath": "artifacts/publish/CheckInManager.Api.QRGenerator/release",
+  // "azureFunctions.projectSubpath": "src/CheckInManager.Api.QRGenerator",
+  // ⬆️⬆️⬆️ For QR Code Generator ⬆️⬆️⬆️
+
+  // ⬇️⬇️⬇️ For Printer ⬇️⬇️⬇️
+  "azureFunctions.deploySubpath": "artifacts/publish/CheckInManager.Api.Printer/release",
+  "azureFunctions.projectSubpath": "src/CheckInManager.Api.Printer",
+  // ⬆️⬆️⬆️ For Printer ⬆️⬆️⬆️
+
+  "azureFunctions.projectLanguage": "C#",
+  "azureFunctions.projectRuntime": "~4",
+  "debug.internalConsoleOptions": "neverOpen",
+  "azureFunctions.preDeployTask": "publish (functions)"
+}

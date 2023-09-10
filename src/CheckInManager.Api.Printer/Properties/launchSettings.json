@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "CheckInManager.Api.Printer": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7071",
+      "launchBrowser": false
+    }
+  }
+}
