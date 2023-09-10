@@ -1,8 +1,9 @@
 ﻿using System.Reflection;
-using CupsPrinter.Attributes;
-using CupsPrinter.Structures;
 
-namespace CupsPrinter.Extensions;
+using CheckInManager.CupsPrinter.Attributes;
+using CheckInManager.CupsPrinter.Structures;
+
+namespace CheckInManager.CupsPrinter.Extensions;
 
 /// <summary>
 /// <see cref="PaperType"/> Extensions.

@@ -1,4 +1,4 @@
-﻿namespace CupsPrinter.Attributes;
+﻿namespace CheckInManager.CupsPrinter.Attributes;
 
 /// <summary>
 /// MediaName attribute.

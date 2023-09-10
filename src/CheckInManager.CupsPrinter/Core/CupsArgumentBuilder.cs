@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
-using CupsPrinter.Extensions;
-using CupsPrinter.Structures;
 
-namespace CupsPrinter.Core;
+using CheckInManager.CupsPrinter.Extensions;
+using CheckInManager.CupsPrinter.Structures;
+
+namespace CheckInManager.CupsPrinter.Core;
 
 /// <summary>
 /// CUPS arguments builder.
