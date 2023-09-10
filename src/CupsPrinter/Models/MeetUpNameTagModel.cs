@@ -13,5 +13,5 @@ public sealed class MeetUpNameTagModel
     /// <summary>
     /// Personal.
     /// </summary>
-    public string? Personal { get; init; }
+    public string? Company { get; init; } = "개인";
 }
