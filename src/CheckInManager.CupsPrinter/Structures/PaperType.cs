@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
-using CupsPrinter.Attributes;
 
-namespace CupsPrinter.Structures;
+using CheckInManager.CupsPrinter.Attributes;
+
+namespace CheckInManager.CupsPrinter.Structures;
 
 /// <summary>
 /// Paper Supported Types.

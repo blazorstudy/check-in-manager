@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <RootNamespace>CupsPrinter</RootNamespace>
-    <AssemblyName>CupsPrinter</AssemblyName>
+    <RootNamespace>CheckInManager.CupsPrinter</RootNamespace>
+    <AssemblyName>CheckInManager.CupsPrinter</AssemblyName>
     <!-- <PublishAot>true</PublishAot> -->
     <!-- <PublishAotUsingRuntimePack>true</PublishAotUsingRuntimePack> -->
   </PropertyGroup>

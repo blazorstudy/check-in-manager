@@ -1,4 +1,4 @@
-namespace CupsPrinter.Services.Interfaces;
+namespace CheckInManager.CupsPrinter.Services.Interfaces;
 
 /// <summary>
 /// Printer service interface.

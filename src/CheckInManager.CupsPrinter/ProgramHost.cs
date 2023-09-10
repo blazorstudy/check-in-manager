@@ -1,7 +1,8 @@
-﻿using CupsPrinter.Services.Interfaces;
+﻿using CheckInManager.CupsPrinter.Services.Interfaces;
+
 using Microsoft.Extensions.Hosting;
 
-namespace CupsPrinter;
+namespace CheckInManager.CupsPrinter;
 
 /// <summary>
 /// Program Host.

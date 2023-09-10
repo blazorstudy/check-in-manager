@@ -1,12 +1,14 @@
 ﻿using System.Diagnostics;
-using CupsPrinter.Core;
-using CupsPrinter.Models;
-using CupsPrinter.Services.Interfaces;
-using CupsPrinter.Structures;
+
+using CheckInManager.CupsPrinter.Core;
+using CheckInManager.CupsPrinter.Models;
+using CheckInManager.CupsPrinter.Services.Interfaces;
+using CheckInManager.CupsPrinter.Structures;
+
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace CupsPrinter.Services;
+namespace CheckInManager.CupsPrinter.Services;
 
 /// <summary>
 /// Printer Service.

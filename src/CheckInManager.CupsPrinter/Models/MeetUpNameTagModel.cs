@@ -1,4 +1,4 @@
-﻿namespace CupsPrinter.Models;
+﻿namespace CheckInManager.CupsPrinter.Models;
 
 /// <summary>
 /// Meet-Up name tag model.

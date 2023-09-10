@@ -1,9 +1,10 @@
-﻿using CupsPrinter.Services;
-using CupsPrinter.Services.Interfaces;
+﻿using CheckInManager.CupsPrinter.Services;
+using CheckInManager.CupsPrinter.Services.Interfaces;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace CupsPrinter;
+namespace CheckInManager.CupsPrinter;
 
 /// <summary>
 /// Entry method.

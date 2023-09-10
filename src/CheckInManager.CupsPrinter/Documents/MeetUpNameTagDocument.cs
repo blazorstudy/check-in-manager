@@ -1,10 +1,11 @@
-﻿using CupsPrinter.Extensions;
-using CupsPrinter.Models;
-using CupsPrinter.Structures;
+﻿using CheckInManager.CupsPrinter.Extensions;
+using CheckInManager.CupsPrinter.Models;
+using CheckInManager.CupsPrinter.Structures;
+
 using QuestPDF.Fluent;
 using QuestPDF.Infrastructure;
 
-namespace CupsPrinter;
+namespace CheckInManager.CupsPrinter;
 
 /// <summary>
 /// <see cref="MeetUpNameTagModel"/> Document.
