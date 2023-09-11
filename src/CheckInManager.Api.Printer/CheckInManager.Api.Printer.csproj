@@ -28,4 +28,9 @@
     <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CheckInManager.CupsPrinter\CheckInManager.CupsPrinter.csproj" />
+    <ProjectReference Include="..\CheckInManager.Core\CheckInManager.Core.csproj" />
+  </ItemGroup>
+
 </Project>

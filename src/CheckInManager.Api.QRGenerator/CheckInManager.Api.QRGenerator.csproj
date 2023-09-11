@@ -28,4 +28,8 @@
     <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CheckInManager.QRGenerator\CheckInManager.QRGenerator.csproj" />
+  </ItemGroup>
+
 </Project>

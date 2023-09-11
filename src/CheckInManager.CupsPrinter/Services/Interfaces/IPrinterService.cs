@@ -1,3 +1,5 @@
+using CheckInManager.Core.Models;
+
 namespace CheckInManager.CupsPrinter.Services.Interfaces;
 
 /// <summary>
@@ -6,7 +8,8 @@ namespace CheckInManager.CupsPrinter.Services.Interfaces;
 public interface IPrinterService
 {
     /// <summary>
-    /// Print sample.
+    /// Print with model.
     /// </summary>
-    void SamplePrint();
+    /// <param name="model">model.</param>
+    void Print(MeetUpNameTagModel model);
 }
