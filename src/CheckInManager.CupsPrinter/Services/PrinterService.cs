@@ -39,9 +39,12 @@ public sealed class PrinterService : IPrinterService
         document.GeneratePdf(pdfPath);
 
         // Run 'lp' command
-        await Process.Start(CupsArgumentBuilder.CreateCommand(DefaultPaperType, pdfPath))
-                     .WaitForExitAsync()
-                     .ConfigureAwait(false);
+        var processTask = Process.Start(CupsArgumentBuilder.CreateCommand(DefaultPaperType, pdfPath));
+
+        if (processTask is not null)
+        {
+            await processTask.WaitForExitAsync().ConfigureAwait(false);
+        }
 
         // Delete pdf file.
         File.Delete(pdfPath);
