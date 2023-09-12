@@ -13,10 +13,5 @@ public enum ImageType
     /// <summary>
     /// JPEG.
     /// </summary>
-    Jpeg,
-
-    /// <summary>
-    /// SVG.
-    /// </summary>
-    Svg
+    Jpeg
 }
