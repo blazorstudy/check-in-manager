@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Mime;
 
 using CheckInManager.Core.Models;
+using CheckInManager.QRGenerator.Enums;
 using CheckInManager.QRGenerator.Services.Interfaces;
 
 using Microsoft.Azure.Functions.Worker;
@@ -32,7 +33,7 @@ public class GenerateQRCode
             Name = "User Name",
         };
 
-        var qrData = _qrGeneratorService.CreateFrom(model);
+        var qrData = _qrGeneratorService.Generate(ImageType.Png, model.Name);
 
         _logger.LogInformation($"Is success: {qrData.Length != 0}");
 

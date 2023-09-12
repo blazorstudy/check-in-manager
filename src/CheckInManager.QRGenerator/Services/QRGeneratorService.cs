@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 
-using CheckInManager.Core.Models;
 using CheckInManager.QRGenerator.Enums;
 using CheckInManager.QRGenerator.Services.Interfaces;
 
@@ -11,8 +10,6 @@ using ZXing.QrCode;
 using ZXing.Rendering;
 using ZXing.SkiaSharp.Rendering;
 
-using static ZXing.Rendering.SvgRenderer;
-
 namespace CheckInManager.QRGenerator.Services;
 
 /// <summary>
@@ -20,44 +17,30 @@ namespace CheckInManager.QRGenerator.Services;
 /// </summary>
 public sealed class QRGeneratorService : IQRGeneratorService
 {
-    private readonly Size DefaultQRSize = new(800, 800);
+    private const int DefaultMargin = 1;
+    private static Size defaultQRSize = new(800, 800);
 
     /// <inheritdoc //>
-    public string CreateVector(string content, Size size, int margin = IQRGeneratorService.DefaultMargin)
+    public ReadOnlySpan<byte> Generate(ImageType imageType, string content, Size? size = null, int? margin = null)
     {
-        return Create<SvgRenderer, SvgImage>(content, size, margin).Content;
-    }
-
-    /// <inheritdoc //>
-    public ReadOnlySpan<byte> CreateImage(ImageType imageType, string content, Size size, int margin = IQRGeneratorService.DefaultMargin)
-    {
-        using var skBitmap = Create<SKBitmapRenderer, SKBitmap>(content, size, margin);
+        using var skBitmap = Create<SKBitmapRenderer, SKBitmap>(content, size ?? defaultQRSize, margin ?? DefaultMargin);
         var format = ConvertToSkia(imageType);
 
         return skBitmap.Encode(format, 100).AsSpan();
     }
 
-    /// <inheritdoc //>
-    public ReadOnlySpan<byte> CreateFrom(MeetUpNameTagModel model)
-    {
-        // todo: 데이터 셋팅.
-        var content = $"{model.Name},{model.Company}";
-
-        return CreateImage(ImageType.Png, content, DefaultQRSize);
-    }
-
-    private TOutput Create<TRenderer, TOutput>(string content, Size size, int margin = 0)
+    private TOutput Create<TRenderer, TOutput>(string content, Size size, int margin)
         where TRenderer : IBarcodeRenderer<TOutput>, new()
         where TOutput : class
     {
-        if (size.IsEmpty)
-        {
-            throw new ArgumentException("Size couldn't empty.");
-        }
-
         if (string.IsNullOrWhiteSpace(content))
         {
             throw new ArgumentNullException(nameof(content));
+        }
+
+        if (size.IsEmpty || size.Width < 1 || size.Height < 1)
+        {
+            throw new ArgumentException("Size couldn't be empty.");
         }
 
         var qrWriter = new BarcodeWriter<TOutput>
