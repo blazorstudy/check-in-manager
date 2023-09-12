@@ -29,7 +29,7 @@ public sealed class PrinterService : IPrinterService
 
     /// <inheritdoc />
 
-    public void Print(MeetUpNameTagModel model)
+    public async Task PrintAsync(MeetUpNameTagModel model)
     {
         var pdfPath = CreateUniqueName();
         var document = new MeetUpNameTagDocument(model, DefaultPaperType);
@@ -39,7 +39,10 @@ public sealed class PrinterService : IPrinterService
         document.GeneratePdf(pdfPath);
 
         // Run 'lp' command
-        Process.Start(CupsArgumentBuilder.CreateCommand(DefaultPaperType, pdfPath));
+        await Process.Start(CupsArgumentBuilder.CreateCommand(DefaultPaperType, pdfPath)).WaitForExitAsync().ConfigureAwait(false);
+
+        // Delete pdf file.
+        File.Delete(pdfPath);
     }
 
     private static string CreateUniqueName()

@@ -36,7 +36,7 @@ public class PrintDocument
 
         response.WriteString($"Model - Name: {model.Name}, Company: {model.Company}");
 
-        _printerService.Print(model);
+        _printerService.PrintAsync(model);
 
         response.WriteString("Done!");
 

@@ -11,5 +11,6 @@ public interface IPrinterService
     /// Print with model.
     /// </summary>
     /// <param name="model">model.</param>
-    void Print(MeetUpNameTagModel model);
+    /// <returns>Task.</returns>
+    Task PrintAsync(MeetUpNameTagModel model);
 }
