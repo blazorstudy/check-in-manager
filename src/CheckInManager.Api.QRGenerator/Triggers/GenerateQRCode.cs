@@ -50,7 +50,7 @@ public class GenerateQRCode
         this._logger.LogInformation("C# HTTP trigger function processed a request.");
 
         var model = await req.ReadAsStringAsync();
-        if (model is null)
+        if (model.IsNullOrDefault())
         {
             this._logger.LogError("Invalid request.");
 
