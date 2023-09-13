@@ -3,6 +3,8 @@
 using CheckInManager.QRGenerator.Enums;
 using CheckInManager.QRGenerator.Services.Interfaces;
 
+using Newtonsoft.Json;
+
 using SkiaSharp;
 
 using ZXing;
@@ -21,12 +23,20 @@ public sealed class QRGeneratorService : IQRGeneratorService
     private static Size defaultQRSize = new(800, 800);
 
     /// <inheritdoc //>
-    public ReadOnlySpan<byte> Generate(ImageType imageType, string content, Size? size = null, int? margin = null)
+    public byte[] Generate<T>(ImageType imageType, T content, Size? size = null, int? margin = null)
     {
-        using var skBitmap = Create<SKBitmapRenderer, SKBitmap>(content, size ?? defaultQRSize, margin ?? DefaultMargin);
-        var format = ConvertToSkia(imageType);
+        var serialised = JsonConvert.SerializeObject(content, formatting: Formatting.Indented);
 
-        return skBitmap.Encode(format, 100).AsSpan();
+        return this.Generate(imageType, serialised, size, margin);
+    }
+
+    /// <inheritdoc //>
+    public byte[] Generate(ImageType imageType, string content, Size? size = null, int? margin = null)
+    {
+        using var skBitmap = this.Create<SKBitmapRenderer, SKBitmap>(content, size ?? defaultQRSize, margin ?? DefaultMargin);
+        var format = this.ConvertToSkia(imageType);
+
+        return skBitmap.Encode(format, 100).AsSpan().ToArray();
     }
 
     private TOutput Create<TRenderer, TOutput>(string content, Size size, int margin)

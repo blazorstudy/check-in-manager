@@ -1,9 +1,16 @@
 using System.Net;
+using System.Net.Mime;
+
 using CheckInManager.Core.Models;
 using CheckInManager.CupsPrinter.Services.Interfaces;
+
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
+using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Extensions;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace CheckInManager.Api.Printer.Triggers;
 
@@ -14,32 +21,42 @@ public class PrintDocument
 
     public PrintDocument(ILoggerFactory loggerFactory, IPrinterService printerService)
     {
-        _logger = loggerFactory.CreateLogger<PrintDocument>();
-        _printerService = printerService ?? throw new ArgumentNullException(nameof(IPrinterService));
+        this._logger = loggerFactory.ThrowIfNullOrDefault().CreateLogger<PrintDocument>();
+        this._printerService = printerService.ThrowIfNullOrDefault();
     }
 
-    [Function("PrintDocument")]
-    public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req)
+    [Function(nameof(PrintDocument.PrintAsync))]
+    [OpenApiOperation(operationId: "generate", tags: new[] { "qrcodes" }, Summary = "Generate a QR code from the given input", Description = "This generates a QR code from the given input text.", Visibility = OpenApiVisibilityType.Important)]
+    [OpenApiSecurity(schemeName: "function_key", schemeType: SecuritySchemeType.ApiKey, Name = "x-functions-key", In = OpenApiSecurityLocationType.Header)]
+    [OpenApiRequestBody(contentType: MediaTypeNames.Application.Json, bodyType: typeof(MeetUpNameTagModel), Required = true, Description = "The input to print.")]
+    [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.Accepted, Summary = "Successful operation.", Description = "This shows the successful operation.")]
+    [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.BadRequest, Summary = "Invalid request.", Description = "This indicates the request is invalid.")]
+    [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.InternalServerError, Summary = "Internal server error.", Description = "This indicates the server is not working as expected.")]
+    public async Task<HttpResponseData> PrintAsync([HttpTrigger(AuthorizationLevel.Function, "POST", Route = "print")] HttpRequestData req)
     {
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
+        this._logger.LogInformation("C# HTTP trigger function processed a request.");
 
-        var response = req.CreateResponse(HttpStatusCode.OK);
-        response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
-
-        response.WriteString("Welcome to Azure Functions!");
-
-        // todo: 가져온 데이터에서 model 만들 필요.
-        var model = new MeetUpNameTagModel
+        var model = await req.ReadFromJsonAsync<MeetUpNameTagModel>();
+        if (model.IsNullOrDefault())
         {
-            Name = "User Name",
-        };
+            this._logger.LogError("Invalid request.");
 
-        response.WriteString($"Model - Name: {model.Name}, Company: {model.Company}");
+            return req.CreateResponse(HttpStatusCode.BadRequest);
+        }
 
-        _printerService.PrintAsync(model);
+        try
+        {
+            await this._printerService.PrintAsync(model);
 
-        response.WriteString("Done!");
+            this._logger.LogInformation($"Model - Name: {model.Name}, Company: {model.Company}");
 
-        return response;
+            return req.CreateResponse(HttpStatusCode.Accepted);
+        }
+        catch (Exception ex)
+        {
+            this._logger.LogError($"Something wrong: {ex.Message}");
+
+            return req.CreateResponse(HttpStatusCode.InternalServerError);
+        }
     }
 }

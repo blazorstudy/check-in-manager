@@ -2,6 +2,10 @@
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+
+    "OpenApi__DocVersion": "1.0.0",
+    "OpenApi__DocTitle": "Document Printer",
+    "OpenApi__DocDescription": "This is a set of API that print documents."
   }
 }

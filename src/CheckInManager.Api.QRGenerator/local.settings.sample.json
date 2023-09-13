@@ -2,6 +2,10 @@
   "IsEncrypted": false,
   "Values": {
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated"
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+
+    "OpenApi__DocVersion": "1.0.0",
+    "OpenApi__DocTitle": "QR Code Generator",
+    "OpenApi__DocDescription": "This is a set of API that generate QR codes based on input."
   }
 }
