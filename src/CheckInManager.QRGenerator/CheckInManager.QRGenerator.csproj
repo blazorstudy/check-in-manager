@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <!-- <TargetFramework>netstandard2.0</TargetFramework> -->
     <OutputType>Library</OutputType>
     <RootNamespace>CheckInManager.QRGenerator</RootNamespace>
     <AssemblyName>CheckInManager.QRGenerator</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="ZXing.Net.Bindings.SkiaSharp" Version="0.16.13" />
   </ItemGroup>
 
