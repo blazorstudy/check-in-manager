@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-
+using System.Reflection;
+using CheckInManager.Core.Models;
 using CheckInManager.CupsPrinter.Core;
-using CheckInManager.CupsPrinter.Models;
 using CheckInManager.CupsPrinter.Services.Interfaces;
 using CheckInManager.CupsPrinter.Structures;
 
@@ -15,6 +15,9 @@ namespace CheckInManager.CupsPrinter.Services;
 /// </summary>
 public sealed class PrinterService : IPrinterService
 {
+    private const string TempFolder = "temp";
+    private const PaperType DefaultPaperType = PaperType.W80H56;
+
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -25,20 +28,39 @@ public sealed class PrinterService : IPrinterService
     }
 
     /// <inheritdoc />
-    public void SamplePrint()
+
+    public async Task PrintAsync(MeetUpNameTagModel model)
     {
-        var pdfPath = "sample.pdf";
-        var paperType = PaperType.W80H56;
-        var model = new MeetUpNameTagModel
-        {
-            Name = "User Name",
-            Company = "Cloud Bandwagon"
-        };
-        var document = new MeetUpNameTagDocument(model, paperType);
+        var pdfPath = CreateUniqueFile();
+        var document = new MeetUpNameTagDocument(model, DefaultPaperType);
+
+
+        // Create pdf file.
         document.GeneratePdf(pdfPath);
 
-        var command = CupsArgumentBuilder.CreateCommand(paperType, pdfPath);
+        // Run 'lp' command
+        var processTask = Process.Start(CupsArgumentBuilder.CreateCommand(DefaultPaperType, pdfPath));
 
-        Process.Start(command);
+        if (processTask is not null)
+        {
+            await processTask.WaitForExitAsync().ConfigureAwait(false);
+        }
+
+        // Delete pdf file.
+        File.Delete(pdfPath);
+    }
+
+    private static string CreateUniqueFile()
+    {
+        var basePath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+        var fileName = $"{DateTime.Now:yyyy-MM-dd__hh_mm_ss}_{Environment.TickCount}.pdf";
+        var saveFolder = Path.Combine(basePath, TempFolder);
+
+        if (!Directory.Exists(saveFolder))
+        {
+            Directory.CreateDirectory(saveFolder);
+        }
+
+        return Path.Combine(saveFolder, fileName);
     }
 }

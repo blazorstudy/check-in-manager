@@ -1,5 +1,5 @@
-﻿using CheckInManager.CupsPrinter.Extensions;
-using CheckInManager.CupsPrinter.Models;
+﻿using CheckInManager.Core.Models;
+using CheckInManager.CupsPrinter.Extensions;
 using CheckInManager.CupsPrinter.Structures;
 
 using QuestPDF.Fluent;

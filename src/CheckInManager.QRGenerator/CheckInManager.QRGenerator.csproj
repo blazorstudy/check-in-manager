@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CheckInManager.QRGenerator</RootNamespace>
+    <AssemblyName>CheckInManager.QRGenerator</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ZXing.Net.Bindings.SkiaSharp" Version="0.16.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CheckInManager.Core\CheckInManager.Core.csproj" />
+  </ItemGroup>
+
+</Project>
