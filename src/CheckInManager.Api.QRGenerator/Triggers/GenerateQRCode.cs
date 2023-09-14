@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Mime;
 
+using CheckInManager.Api.QRGenerator.Examples;
 using CheckInManager.QRGenerator.Enums;
 using CheckInManager.QRGenerator.Services.Interfaces;
 
@@ -41,7 +42,7 @@ public class GenerateQRCode
     [Function(nameof(GenerateQRCode.GenerateAsync))]
     [OpenApiOperation(operationId: "generate", tags: new[] { "qrcodes" }, Summary = "Generate a QR code from the given input", Description = "This generates a QR code from the given input text.", Visibility = OpenApiVisibilityType.Important)]
     [OpenApiSecurity(schemeName: "function_key", schemeType: SecuritySchemeType.ApiKey, Name = "x-functions-key", In = OpenApiSecurityLocationType.Header)]
-    [OpenApiRequestBody(contentType: MediaTypeNames.Text.Plain, bodyType: typeof(string), Required = true, Description = "The input for QR code generation.")]
+    [OpenApiRequestBody(contentType: MediaTypeNames.Text.Plain, bodyType: typeof(string), Example = typeof(InputExample), Required = true, Description = "The input for QR code generation.")]
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: MediaTypeNames.Image.Png, bodyType: typeof(byte[]), Summary = "The generated QR code.", Description = "This returns the QR code generated from the text input.")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.BadRequest, Summary = "Invalid request.", Description = "This indicates the request is invalid.")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.InternalServerError, Summary = "Internal server error.", Description = "This indicates the server is not working as expected.")]

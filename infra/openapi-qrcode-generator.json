@@ -1,0 +1,82 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "QR Code Generator",
+    "description": "This is a set of API that generate QR codes based on input.",
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7071/api"
+    }
+  ],
+  "paths": {
+    "/generate": {
+      "post": {
+        "tags": [
+          "qrcodes"
+        ],
+        "summary": "Generate a QR code from the given input",
+        "description": "This generates a QR code from the given input text.",
+        "operationId": "generate",
+        "requestBody": {
+          "description": "The input for QR code generation.",
+          "content": {
+            "text/plain": {
+              "schema": {
+                "type": "string"
+              },
+              "examples": {
+                "example": {
+                  "value": "f0fdff37-c8e9-4a47-bea6-cbfe36397312"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "This returns the QR code generated from the text input.",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            },
+            "x-ms-summary": "The generated QR code."
+          },
+          "400": {
+            "description": "This indicates the request is invalid.",
+            "x-ms-summary": "Invalid request."
+          },
+          "500": {
+            "description": "This indicates the server is not working as expected.",
+            "x-ms-summary": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "function_key": []
+          }
+        ],
+        "x-ms-visibility": "important"
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "function_key": {
+        "type": "apiKey",
+        "name": "x-functions-key",
+        "in": "header"
+      }
+    }
+  }
+}

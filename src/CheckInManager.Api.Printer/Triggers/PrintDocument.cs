@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Mime;
 
+using CheckInManager.Api.Printer.Examples;
 using CheckInManager.Core.Models;
 using CheckInManager.CupsPrinter.Services.Interfaces;
 
@@ -28,7 +29,7 @@ public class PrintDocument
     [Function(nameof(PrintDocument.PrintAsync))]
     [OpenApiOperation(operationId: "generate", tags: new[] { "qrcodes" }, Summary = "Generate a QR code from the given input", Description = "This generates a QR code from the given input text.", Visibility = OpenApiVisibilityType.Important)]
     [OpenApiSecurity(schemeName: "function_key", schemeType: SecuritySchemeType.ApiKey, Name = "x-functions-key", In = OpenApiSecurityLocationType.Header)]
-    [OpenApiRequestBody(contentType: MediaTypeNames.Application.Json, bodyType: typeof(MeetUpNameTagModel), Required = true, Description = "The input to print.")]
+    [OpenApiRequestBody(contentType: MediaTypeNames.Application.Json, bodyType: typeof(MeetUpNameTagModel), Example = typeof(MeetUpNameTagModelExample), Required = true, Description = "The input to print.")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.Accepted, Summary = "Successful operation.", Description = "This shows the successful operation.")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.BadRequest, Summary = "Invalid request.", Description = "This indicates the request is invalid.")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.InternalServerError, Summary = "Internal server error.", Description = "This indicates the server is not working as expected.")]

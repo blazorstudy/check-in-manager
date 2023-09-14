@@ -1,0 +1,87 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Document Printer",
+    "description": "This is a set of API that print documents.",
+    "license": {
+      "name": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7071/api"
+    }
+  ],
+  "paths": {
+    "/print": {
+      "post": {
+        "tags": [
+          "qrcodes"
+        ],
+        "summary": "Generate a QR code from the given input",
+        "description": "This generates a QR code from the given input text.",
+        "operationId": "generate",
+        "requestBody": {
+          "description": "The input to print.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/meetUpNameTagModel"
+              },
+              "examples": {
+                "example": {
+                  "value": "{\"name\":\"홍길동\",\"company\":\"블레이저코리아\"}"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "This shows the successful operation.",
+            "x-ms-summary": "Successful operation."
+          },
+          "400": {
+            "description": "This indicates the request is invalid.",
+            "x-ms-summary": "Invalid request."
+          },
+          "500": {
+            "description": "This indicates the server is not working as expected.",
+            "x-ms-summary": "Internal server error."
+          }
+        },
+        "security": [
+          {
+            "function_key": []
+          }
+        ],
+        "x-ms-visibility": "important"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "meetUpNameTagModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "function_key": {
+        "type": "apiKey",
+        "name": "x-functions-key",
+        "in": "header"
+      }
+    }
+  }
+}
