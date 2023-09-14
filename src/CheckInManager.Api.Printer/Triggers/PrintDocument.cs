@@ -27,7 +27,7 @@ public class PrintDocument
     }
 
     [Function(nameof(PrintDocument.PrintAsync))]
-    [OpenApiOperation(operationId: "generate", tags: new[] { "qrcodes" }, Summary = "Generate a QR code from the given input", Description = "This generates a QR code from the given input text.", Visibility = OpenApiVisibilityType.Important)]
+    [OpenApiOperation(operationId: "print", tags: new[] { "print" }, Summary = "Print document from the given input", Description = "This prints a document from the given input text.", Visibility = OpenApiVisibilityType.Important)]
     [OpenApiSecurity(schemeName: "function_key", schemeType: SecuritySchemeType.ApiKey, Name = "x-functions-key", In = OpenApiSecurityLocationType.Header)]
     [OpenApiRequestBody(contentType: MediaTypeNames.Application.Json, bodyType: typeof(MeetUpNameTagModel), Example = typeof(MeetUpNameTagModelExample), Required = true, Description = "The input to print.")]
     [OpenApiResponseWithoutBody(statusCode: HttpStatusCode.Accepted, Summary = "Successful operation.", Description = "This shows the successful operation.")]

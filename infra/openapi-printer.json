@@ -18,11 +18,11 @@
     "/print": {
       "post": {
         "tags": [
-          "qrcodes"
+          "print"
         ],
-        "summary": "Generate a QR code from the given input",
-        "description": "This generates a QR code from the given input text.",
-        "operationId": "generate",
+        "summary": "Print document from the given input",
+        "description": "This prints a document from the given input text.",
+        "operationId": "print",
         "requestBody": {
           "description": "The input to print.",
           "content": {
