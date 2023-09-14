@@ -29,6 +29,11 @@
             "text/plain": {
               "schema": {
                 "type": "string"
+              },
+              "examples": {
+                "example": {
+                  "value": "f0fdff37-c8e9-4a47-bea6-cbfe36397312"
+                }
               }
             }
           },

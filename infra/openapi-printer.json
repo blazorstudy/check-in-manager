@@ -29,6 +29,11 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/meetUpNameTagModel"
+              },
+              "examples": {
+                "example": {
+                  "value": "{\"name\":\"홍길동\",\"company\":\"블레이저코리아\"}"
+                }
               }
             }
           },
