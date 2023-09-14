@@ -43,7 +43,7 @@
 *cupsModelNumber: 1
 *1284DeviceID:	"MFG:nemonic ;CMD:ESC,STAR;MDL:MIP-001;CLS:PRINTER"
 *cupsFilter: "application/vnd.cups-raster 50 /usr/libexec/cups/filter/rastertonemonic"
-*APPrinterIconPath: "/Library/Printers/Nemonic/nemonic.icns"
+*APPrinterIconPath: "/Library/Printers/nemonic.icns"
 
 
 
@@ -74,7 +74,7 @@
 
 *OpenUI *Rotation/Rotate 180 Degree: PickOne
 *OrderDependency: 10 AnySetup *Rotation
-*DefaultRotation: 0No 
+*DefaultRotation: 0No
 *Rotation 0No/No: "setpagedevice"
 *Rotation 1Yes/Yes: "setpagedevice"
 *CloseUI: *Rotation
@@ -130,12 +130,12 @@
 
 *MaxMediaWidth:  "226.8"
 *MaxMediaHeight: "794.5"
-*HWMargins:	 11.3 11.3 11.3 11.3 
+*HWMargins:	 11.3 11.3 11.3 11.3
 *CustomPageSize True: "pop pop pop <</PageSize[5 -2 roll]/HWResolution[203 203]/ImagingBBox null>>setpagedevice"
 *ParamCustomPageSize Width:	   1 points 226.8 226.8
 *ParamCustomPageSize Height:	   2 points 72 794.5
-*ParamCustomPageSize WidthOffset:  3 points 11.3 11.3 
-*ParamCustomPageSize HeightOffset: 4 points 11.3 11.3 
+*ParamCustomPageSize WidthOffset:  3 points 11.3 11.3
+*ParamCustomPageSize HeightOffset: 4 points 11.3 11.3
 *ParamCustomPageSize Orientation:  5 int 0 0
 
 *CloseGroup: General
