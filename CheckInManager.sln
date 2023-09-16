@@ -15,13 +15,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckInManager.Core", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckInManager.QRGenerator", "src\CheckInManager.QRGenerator\CheckInManager.QRGenerator.csproj", "{3D1FE9D3-7768-4EDA-9DF2-77B63EBD1FCA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{07601C33-801F-4595-A294-3D331D0BABBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckInManager.CupsPrinter.Tests", "tests\CheckInManager.CupsPrinter.Tests\CheckInManager.CupsPrinter.Tests.csproj", "{EF979182-28B7-41E0-A0B0-31BBB3CD46A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckInManager.QRGenerator.Tests", "tests\CheckInManager.QRGenerator.Tests\CheckInManager.QRGenerator.Tests.csproj", "{D1298CE7-AA0E-4CAD-A563-F493F0CEA808}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ACAD0D4A-EE54-4456-A0AA-FC7E32571741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -44,6 +47,17 @@ Global
 		{3D1FE9D3-7768-4EDA-9DF2-77B63EBD1FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D1FE9D3-7768-4EDA-9DF2-77B63EBD1FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D1FE9D3-7768-4EDA-9DF2-77B63EBD1FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF979182-28B7-41E0-A0B0-31BBB3CD46A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF979182-28B7-41E0-A0B0-31BBB3CD46A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF979182-28B7-41E0-A0B0-31BBB3CD46A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF979182-28B7-41E0-A0B0-31BBB3CD46A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1298CE7-AA0E-4CAD-A563-F493F0CEA808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1298CE7-AA0E-4CAD-A563-F493F0CEA808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1298CE7-AA0E-4CAD-A563-F493F0CEA808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1298CE7-AA0E-4CAD-A563-F493F0CEA808}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ACAD0D4A-EE54-4456-A0AA-FC7E32571741} = {68E961A5-A765-4024-8474-ED5F27A00B93}
@@ -51,5 +65,7 @@ Global
 		{1ADAA309-8ECA-452B-9E16-78859B21CE15} = {68E961A5-A765-4024-8474-ED5F27A00B93}
 		{EF0D803C-BF03-4BD1-AC75-1C37245CC940} = {68E961A5-A765-4024-8474-ED5F27A00B93}
 		{3D1FE9D3-7768-4EDA-9DF2-77B63EBD1FCA} = {68E961A5-A765-4024-8474-ED5F27A00B93}
+		{EF979182-28B7-41E0-A0B0-31BBB3CD46A8} = {07601C33-801F-4595-A294-3D331D0BABBF}
+		{D1298CE7-AA0E-4CAD-A563-F493F0CEA808} = {07601C33-801F-4595-A294-3D331D0BABBF}
 	EndGlobalSection
 EndGlobal
