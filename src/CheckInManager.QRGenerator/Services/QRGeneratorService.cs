@@ -65,6 +65,8 @@ public sealed class QRGeneratorService : IQRGeneratorService
             },
         };
 
+        qrWriter.Options.Hints[EncodeHintType.CHARACTER_SET] = System.Text.Encoding.UTF8.WebName.ToUpper();
+
         return qrWriter.Write(content);
     }
 
