@@ -4,8 +4,9 @@
     <!-- <TargetFramework>net8.0</TargetFramework> -->
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <OutputType>Exe</OutputType>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+
+    <AssemblyName>CheckInManager.Api.Printer</AssemblyName>
+    <RootNamespace>CheckInManager.Api.Printer</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

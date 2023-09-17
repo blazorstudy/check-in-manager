@@ -5,9 +5,6 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <OutputType>Exe</OutputType>
 
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-
     <AssemblyName>CheckInManager.Api.QRGenerator</AssemblyName>
     <RootNamespace>CheckInManager.Api.QRGenerator</RootNamespace>
   </PropertyGroup>
