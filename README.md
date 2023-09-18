@@ -18,15 +18,15 @@ QR 코드로 참가자 정보를 생성하고 스캔한 후 프린트합니다.
   1. 아래 명령어를 통해 프린터 드라이버를 설치합니다.
 
      ```bash
-     cp drivers/cups/nemonic/Nemonic_MIP_001.ppd /etc/cups/ppd/Nemonic_MIP_001.ppd
-     cp drivers/cups/nemonic/nemonic.icns /Library/Printers/nemonic.icns
-     cp drivers/cups/nemonic/rastertonemonic /usr/libexec/cups/filter/rastertonemonic
+     sudo mkdir /Library/Printers
+     sudo cp ./drivers/cups/nemonic/nemonic.icns /Library/Printers/nemonic.icns
+     sudo cp ./drivers/cups/nemonic/rastertonemonic /usr/libexec/cups/filter/rastertonemonic
      sudo chown root /usr/libexec/cups/filter/rastertonemonic
      ```
 
   2. 네모닉 라벨 프린터와 호스트 PC를 연결합니다.
   3. 호스트 PC에서 네모닉 라벨 프린터를 새 프린터로 추가합니다.
-  4. 드라이버 소프트웨어 선택이 필요한 경우, 1번에서 복사한 `Nemonic_MIP_001.ppd` 파일을 선택합니다.
+  4. 드라이버 소프트웨어 선택이 필요한 경우, [Nemonic_MIP_001.ppd](./drivers/cups/nemonic/Nemonic_MIP_001.ppd) 파일을 선택합니다.
 
 ### 개발 PC
 
