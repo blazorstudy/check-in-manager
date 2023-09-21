@@ -20,5 +20,5 @@ $guids | ForEach-Object {
     $collection.Add($item)
 }
 
-"GUID,VerificationCode" | Out-File -FilePath $OutputFile -Append
+"GUID,VerificationCode" | Out-File -FilePath $OutputFile -Force
 $collection | ForEach-Object { "$($_.GUID),$($_.VerificationCode)" | Out-File -FilePath $OutputFile -Append }
