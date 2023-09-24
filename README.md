@@ -22,6 +22,7 @@ QR 코드로 참가자 정보를 생성하고 스캔한 후 프린트합니다.
      sudo cp ./drivers/cups/nemonic/nemonic.icns /Library/Printers/nemonic.icns
      sudo cp ./drivers/cups/nemonic/rastertonemonic /usr/libexec/cups/filter/rastertonemonic
      sudo chown root /usr/libexec/cups/filter/rastertonemonic
+     sudo chmod 755 /usr/libexec/cups/filter/rastertonemonic
      ```
 
   2. 네모닉 라벨 프린터와 호스트 PC를 연결합니다.
